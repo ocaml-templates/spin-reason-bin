@@ -1,35 +1,9 @@
-(name bin)
+(inherit
+  (official bin)
+  (overwrites (actions example_commands)))
+
+(name reason-bin)
 (description "Native project containing a binary")
-
-(config project_name
-  (input (prompt "Project name")))
-
-(config project_slug
-  (input (prompt "Project slug"))
-  (default (slugify :project_name))
-  (rules
-    ("The project slug must be lowercase and contain ASCII characters and '-' only."
-      (eq :project_slug (slugify :project_slug)))))
-
-(config project_snake
-  (default (snake_case :project_slug)))
-
-(config create_switch
-  (default true))
-
-(config project_description
-  (input (prompt "Description"))
-  (default "A short, but powerful statement about your project")
-  (rules
-    ("The last character of the description cannot be a \".\" to comply with Opam"
-      (neq . (last_char :project_description)))))
-
-(config username
-  (input (prompt "Name of the author")))
-
-(config github_username
-  (input (prompt "Github username"))
-  (default :username))
 
 (config syntax
   (select
@@ -42,33 +16,9 @@
     (values Opam Esy))
   (default (if (eq :syntax Reason) Esy Opam)))
 
-(config test_framework
-  (select
-    (prompt "Which test framework do you prefer?")
-    (values Alcotest Rely None))
-  (default (if (eq :syntax Reason) Rely Alcotest)))
-
-(config ci_cd
-  (select
-    (prompt "Which CI/CD do you use?")
-    (values Github None))
-  (default Github))
-
 (ignore 
   (files .ocamlformat)
   (enabled_if (neq :syntax OCaml)))
-
-(ignore 
-  (files test/)
-  (enabled_if (eq :test_framework None)))
-
-(ignore 
-  (files test/support/test_framework.* *.opam.template)
-  (enabled_if (neq :test_framework Rely)))
-
-(ignore
-  (files github/*)
-  (enabled_if (neq :ci_cd Github)))
 
 (ignore
   (files esy.json)
@@ -77,12 +27,6 @@
 (ignore
   (files Makefile)
   (enabled_if (neq :package_manager Opam)))
-
-; We need to do this because Dune won't copy .github during build
-(post_gen
-  (actions
-    (run mv github .github))
-  (enabled_if (eq :ci_cd Github)))
 
 (post_gen
   (actions

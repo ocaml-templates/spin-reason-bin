@@ -3,7 +3,7 @@
 Native project containing a binary.
 
 ```bash
-spin new bin
+spin new https://github.com/ocaml-templates/spin-reason-bin.git
 ```
 
 ## Acknowledgments
