@@ -8,6 +8,8 @@
 opam spin new https://github.com/ocaml-templates/spin-reason-bin.git
 ```
 
+You can see a generated project with Reason and Esy in the [`example/`](example/) directory.
+
 ## Requirements
 
 - To use the `opam` package manager, you'll need `opam >= 2.0` installed on your system.
