@@ -28,6 +28,14 @@
   (files Makefile)
   (enabled_if (neq :package_manager Opam)))
 
+; We need to do this because Dune won't copy .github during build.
+; Since we override the actions when inheriting, we need copy this
+; from the original template.
+(post_gen
+  (actions
+    (run mv github .github))
+  (enabled_if (eq :ci_cd GitHub)))
+
 (post_gen
   (actions
     (run esy install)
