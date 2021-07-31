@@ -44,7 +44,8 @@ jobs:
       - name: Use Esy
         uses: esy/github-action@v1
         with:
-          cache-key: ${{ hashFiles('_generated/esy.lock/index.json') }}
+          working-directory: example/
+          cache-key: ${{ hashFiles('esy.lock/index.json') }}
         if: ${{ matrix.package-manager == 'Esy' }}
 
       - run: opam install spin
