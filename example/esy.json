@@ -20,12 +20,12 @@
     "ocaml": "~4.12.0"
   },
   "scripts": {
-    "start": "esy x main",
-    "test": "esy dune --root . runtest",
-    "doc": "esy dune --root . build @doc",
+    "start": "esy dune exec bin/main.exe",
+    "test": "esy dune build --root . @test/runtest",
+    "doc": "esy dune build --root . @doc",
     "doc-path": "esy echo #{self.target_dir}/default/_doc/_html/index.html",
-    "format": "esy dune --root . build @fmt --auto-promote",
-    "watch": "esy dune --root . build -p #{self.name} --watch",
-    "utop": "esy dune --root . utop lib -- -implicit-bindings"
+    "fmt": "esy dune build --root . @fmt --auto-promote",
+    "watch": "esy dune build --root . --watch",
+    "utop": "esy dune utop --root . lib -- -implicit-bindings"
   }
 }
