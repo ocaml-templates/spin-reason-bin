@@ -36,7 +36,7 @@
     "refmterr": "*",
     {%- endif %}
     "@opam/ocaml-lsp-server": "*",
-    "ocaml": "~4.10.0"
+    "ocaml": "~4.12.0"
   },
   "scripts": {
     "start": "esy x main",
