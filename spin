@@ -16,6 +16,10 @@
     (values Opam Esy))
   (default (if (eq :syntax Reason) Esy Opam)))
 
+(ignore
+  (files github/*)
+  (enabled_if (neq :ci_cd GitHub)))
+
 (ignore 
   (files .ocamlformat)
   (enabled_if (neq :syntax OCaml)))
