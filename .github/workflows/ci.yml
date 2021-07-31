@@ -25,8 +25,8 @@ jobs:
       SPIN_PROJECT_NAME: Demo
       SPIN_CREATE_SWITCH: false
       SPIN_AUTHOR_NAME: Jonh Doe
-      SPIN_INCLUDE_TAILWIND: ${{ matrix.tailwind == 'tailwind' }}
-      SPIN_INCLUDE_EMBEDDED_JS: ${{ matrix.embedded-js == 'embedded-js' }}
+      SPIN_SYNTAX: ${{ matrix.syntax }}
+      SPIN_PACKAGE_MANAGER: ${{ matrix.package-manager }}
 
     steps:
       - name: Checkout code
