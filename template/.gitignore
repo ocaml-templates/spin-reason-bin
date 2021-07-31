@@ -5,9 +5,11 @@ _build/
 # Merlin configuring file for Vim and Emacs
 .merlin
 
+{%- if package_manager == 'Opam' %}
+
 # Local OPAM switch
 _opam/
-
+{% endif %}
 {%- if package_manager == 'Esy' %}
 
 # Esy generated files

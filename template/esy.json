@@ -29,9 +29,6 @@
     {% endif -%}
     "@opam/odoc": "*",
     "@opam/utop": "*",
-    {% if test_framework == 'Rely' -%}
-    "@reason-native/rely": "*",
-    {%- endif -%}
     {%- if syntax == 'Reason' %}
     "refmterr": "*",
     {%- endif %}
