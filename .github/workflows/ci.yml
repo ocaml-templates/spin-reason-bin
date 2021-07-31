@@ -37,6 +37,16 @@ jobs:
         with:
           ocaml-compiler: ocaml-base-compiler.4.12.0
 
+      - name: Install esy
+        run: npm install -g esy
+        if: ${{ matrix.package-manager == 'Esy' }}
+
+      - name: Use Esy
+        uses: esy/github-action@v1
+        with:
+          cache-key: ${{ hashFiles('_generated/esy.lock/index.json') }}
+        if: ${{ matrix.package-manager == 'Esy' }}
+
       - run: opam install spin
 
       - run: opam exec -- spin new . _generated -d -vv
