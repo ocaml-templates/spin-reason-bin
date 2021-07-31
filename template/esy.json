@@ -2,11 +2,7 @@
   "name": "{{ project_slug }}",
   "esy": {
     "build": "dune build -p #{self.name}",
-    {%- if syntax == 'Reason' %}
-    "buildDev": "refmterr dune build --root . --only-package #{self.name}",
-    {% else %}
     "buildDev": "dune build --root . --only-package #{self.name}",
-    {% endif -%}
     "buildEnv": {
       "ODOC_SYNTAX": "{% if syntax == 'Reason' %}re{% else %}ml{% endif %}"
     }
@@ -22,16 +18,11 @@
     {% if test_framework == 'Alcotest' -%}
     "@opam/alcotest": "*",
     {% endif -%}
-    "@opam/dune-release": "*",
-    "@opam/merlin": "*",
     {% if syntax == 'OCaml' -%}
     "@opam/ocamlformat": "*",
     {% endif -%}
     "@opam/odoc": "*",
     "@opam/utop": "*",
-    {%- if syntax == 'Reason' %}
-    "refmterr": "*",
-    {%- endif %}
     "@opam/ocaml-lsp-server": "*",
     "ocaml": "~4.12.0"
   },

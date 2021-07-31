@@ -25,4 +25,5 @@
   (ocaml (>= 4.08.0))
   dune
   (alcotest :with-test)
-  (odoc :with-doc)))
+  (odoc :with-doc)
+  (reason :build)))

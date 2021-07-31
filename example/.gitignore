@@ -5,9 +5,6 @@ _build/
 # Merlin configuring file for Vim and Emacs
 .merlin
 
-# Local OPAM switch
-_opam/
-
 # Esy generated files
 _esy/
 _release/
