@@ -3,7 +3,7 @@
   (overwrites (actions example_commands)))
 
 (name reason-bin)
-(description "Native project containing a binary")
+(description "Spin generator for binary applications with Reason and Esy support")
 
 (config syntax
   (select
