@@ -1,0 +1,4 @@
+(tests
+ (names demo_test)
+ (package demo)
+ (libraries alcotest demo))

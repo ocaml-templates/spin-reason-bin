@@ -1,0 +1,4 @@
+(library
+ (name demo)
+ (public_name demo)
+ (libraries))

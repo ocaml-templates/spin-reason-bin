@@ -3,7 +3,7 @@
   (overwrites (actions example_commands)))
 
 (name reason-bin)
-(description "Native project containing a binary")
+(description "Spin generator for binary applications with Reason and Esy support")
 
 (config syntax
   (select
@@ -16,6 +16,10 @@
     (values Opam Esy))
   (default (if (eq :syntax Reason) Esy Opam)))
 
+(ignore
+  (files github/*)
+  (enabled_if (neq :ci_cd GitHub)))
+
 (ignore 
   (files .ocamlformat)
   (enabled_if (neq :syntax OCaml)))
@@ -27,6 +31,14 @@
 (ignore
   (files Makefile)
   (enabled_if (neq :package_manager Opam)))
+
+; We need to do this because Dune won't copy .github during build.
+; Since we override the actions when inheriting, we need copy this
+; from the original template.
+(post_gen
+  (actions
+    (run mv github .github))
+  (enabled_if (eq :ci_cd GitHub)))
 
 (post_gen
   (actions
